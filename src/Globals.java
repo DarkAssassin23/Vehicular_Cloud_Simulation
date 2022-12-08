@@ -33,7 +33,7 @@ public class Globals
 	
 	// Since we are using MapReduce each individual VM
 	// will be significantly smaller than a typical VM you 
-	// run on a server
+	// run on a hypervisor
 	final public static int MAX_VM_SIZE = 1024; // in MB
 	final public static int MIN_VM_SIZE = 100; // in MB
 	
