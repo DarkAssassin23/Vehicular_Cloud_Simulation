@@ -11,7 +11,7 @@ public class Globals
 	
 	// Simulation Assumptions
 	final public static int RUN_TIME = 5000; // in milliseconds
-	final public static int NUM_INIT_VMS = 20;
+	final public static int NUM_INIT_VMS = 100;
 	
 	// Data Transfer Assumptions
 	final public static double MAX_BANDWIDTH_SPEED = 27; // in Mbps
