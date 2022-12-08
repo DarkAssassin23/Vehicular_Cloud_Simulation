@@ -17,6 +17,7 @@ public class Globals
 	final public static double MAX_BANDWIDTH_SPEED = 27; // in Mbps
 	final public static double MIN_BANDWIDTH_SPEED = 10; // in Mbps
 	final public static double ASSUMED_BANDWITH = 13.5; // in Mbps
+	final public static float AP_MAX_RANGE = 0.45f; // radius of the AP's range in miles
 	// Used to ensure that the vehicle can actually have
 	// time to do work on the vm rather than waste time 
 	// transmitting it for no work to be done.

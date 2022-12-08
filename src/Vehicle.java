@@ -480,7 +480,7 @@ public class Vehicle
 	public boolean inRangeOfAP()
 	{
 		double dec = getMileMarker() - Math.floor(getMileMarker());
-		return (dec<=.45||dec>=.55);
+		return (dec<=(0+Globals.AP_MAX_RANGE)||dec>=(1-Globals.AP_MAX_RANGE));
 	}
 	
 	/**
