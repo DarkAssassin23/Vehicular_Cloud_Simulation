@@ -39,45 +39,25 @@ the VM requires, it can use those extra resources in order to
 speed up the work done on the VM.
 
 ### VM Migration Strategy
-With the goal of reducing job completion time, multiple migration 
-strategies were considered and tested. One of these included 
-estimating the time it would take to transfer a VM to and from a 
-vehicle, plus a little extra for buffer, compared to the 
-estimated time the vehicle will be on the highway for, given the 
-vehicle's telling the AP how long it will be on the highway for 
-and the average speed of the highway. If the vehicle's estimated 
-time on the highway was longer than the estimated time to send 
-the VM to and from, that VM would then be assigned to the 
-vehicle. This strategy worked better than just sending a VM to 
-any vehicle that is on the highway, greatly reducing the number 
-of failed migrations and the average time to complete a job. 
-However, the average completion time of the VMs was still about 
-30% slower than the expected time to complete the task. Although, 
-part of this would be attributed to the overhead of migrating VMs 
-around.
-
-The strategy I ended up settling on was similar to the one just 
-mentioned, with a key difference. The difference is that we are 
-more picky about which cars can receive VMs in the first place.
-This was done by, rather than estimating the transfer time of the 
-VM both ways plus a small buffer, assume suboptimal network 
-transfer speed performance, i.e. not the max 27Mbps, as well as 
-adding in job completion time. This forces cars to be on the 
-highway for an extended period of time to even be considered for 
-a VM. This greatly reduces the number of times a VM has to be 
-migrated because of the large buffer built into the estimation of 
-the transfer, as well as adding time to complete a certain 
-percentage of the job. Doing this greatly reduces the number 
-of total migrations, and significantly reduces the number of 
-failed migrations to close to if not, zero in some cases. 
-Because time to execute a certain percentage of the job was 
-factored into whether the VM gets migrated or not, this 
-completely eliminates the occurrence of a VM being migrated to a 
-vehicle, only for it to then have to be immediately migrated 
-back, because the vehicle is about to leave the highway. Overall, 
-using this strategy enabled jobs and the associated overhead of 
-being transferred to be completed in roughly the same, or in some 
-cases less, time than the estimated task length.
+The strategy I ended up settling on was to be picky about which cars 
+can receive VMs in the first place. This was done by, estimating the 
+transfer time of the VM both ways by assuming suboptimal network 
+transfer speed performance, i.e., not the maximum 27 Mbps, as well as 
+adding in job completion time to the time calculation. This forces cars 
+to be on the highway for an extended period of time to even be 
+considered for a VM. This greatly reduces the number of times a VM has 
+to be migrated because of the large buffer built into the estimation of 
+the transfer, as well as adding time to complete a certain percentage 
+of the job. Doing this greatly reduces the number of total migrations 
+and significantly reduces the number of failed migrations to close to, 
+if not, zero in some cases. Because time to execute a certain 
+percentage of the job was factored into whether the VM gets migrated or 
+not, this completely eliminates the occurrence of a VM being migrated 
+to a vehicle, only for it to then have to be immediately migrated back, 
+because the vehicle is about to leave the highway. Overall, using this 
+strategy enabled jobs and the associated overhead of being transferred 
+to be completed in roughly the same, or in some cases less, time than 
+the estimated task length.
 
 -------
 ## Building and Running
